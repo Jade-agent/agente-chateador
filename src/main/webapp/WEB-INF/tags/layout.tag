@@ -1,10 +1,15 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@tag description="Layout Base" pageEncoding="UTF-8"%>
+<%@attribute name="header" fragment="true" %>
+<%@attribute name="footer" fragment="true" %>
+<!DOCTYPE html>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="refresh" content="0;/main">
-    <title>Agente Chateador - Home Page</title>
+    <title>Agente Chateador - Peliculas</title>
     <link rel="stylesheet" href="/webjars/bootstrap/3.2.0/css/bootstrap.min.css">
     <script type="application/javascript" src="/webjars/jquery/2.1.1/jquery.min.js"></script>
 </head>
@@ -16,6 +21,10 @@
         </div>
     </div>
 </nav>
+
+<div class="container">
+    <jsp:doBody/>
+</div>
 
 </body>
 </html>

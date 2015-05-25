@@ -3,16 +3,14 @@ package co.razorblade446.java.agentechateador.model;
 import javax.persistence.*;
 import static javax.persistence.GenerationType.AUTO;
 
-@Entity
-@Table
+@Entity(name = "pelicula")
 public class Pelicula {
 
     @Id
     @GeneratedValue(strategy = AUTO)
-    @Column
     private long peliculaId;
 
-    @Column(length = 50, nullable = false, unique = true)
+    @Column(nullable = false, unique = true)
     private String nombre;
 
     @Column(nullable = false)

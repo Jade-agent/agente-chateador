@@ -1,5 +1,7 @@
 package co.razorblade446.java.agentechateador.controller;
 
+import co.razorblade446.java.agentechateador.model.Pelicula;
+import co.razorblade446.java.agentechateador.model.PeliculaRepository;
 import jade.wrapper.gateway.JadeGateway;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,14 +16,13 @@ import org.springframework.web.servlet.ModelAndView;
 public class PeliculasController {
 
     @Autowired
-    private SessionFactory sessionFactory;
-
-    private Session currentSession;
+    private PeliculaRepository peliculaRepository;
 
     @RequestMapping(value = "/peliculas", method = RequestMethod.GET)
-    public ModelAndView getListaPeliculas(ModelMap modelo){
-        ModelAndView mv = new ModelAndView("peliculas_listado");
-        return mv;
+    public String getListaPeliculas(ModelMap model){
+        model.addAttribute("pelicula", new Pelicula());
+        model.addAttribute("peliculas", peliculaRepository.findAll());
+        return "peliculas_lista";
     }
 
     public PeliculasController() {
