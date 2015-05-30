@@ -17,7 +17,12 @@
 <nav class="nav navbar-inverse navbar-static-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand">Agente Chateador</a>
+            <a class="navbar-brand" href="/">Agente Chateador</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/peliculas">Pel&iacute;culas</a></li>
+            </ul>
         </div>
     </div>
 </nav>

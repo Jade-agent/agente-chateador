@@ -1,5 +1,8 @@
 package co.razorblade446.java.agentechateador.agents;
 
+/**
+ * Clase mensaje Usuario
+ */
 public class Usuario implements java.io.Serializable{
 
     private String usuario = new String("");

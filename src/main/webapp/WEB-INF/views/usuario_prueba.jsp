@@ -20,7 +20,7 @@
     <div class="row">
         <div class="col-md-12">
             <h1>Ingrese datos al agente:</h1>
-            <form class="form-inline" role="form" action="/validar" method="post" enctype="application/x-www-form-urlencoded">
+            <form class="form-inline" role="form" action="/usuario/validar" method="POST" enctype="application/x-www-form-urlencoded">
                 <div class="form-group">
                     <label for="user">Usuario</label>
                     <input type="text" class="form-control" id="user" placeholder="Usuario">

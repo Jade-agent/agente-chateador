@@ -23,7 +23,7 @@ public class MainController {
         return "usuario_prueba";
     }
 
-    @RequestMapping(value ="/usuario/validar", method = RequestMethod.POST)
+    @RequestMapping(value ="/usuario/validar", method = RequestMethod.GET)
     public String validateLogin(ModelMap model,
             @RequestParam(value = "user", required = true) String user,
             @RequestParam(value = "password", required = true) String password){

@@ -8,8 +8,10 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -23,6 +25,14 @@ public class PeliculasController {
         model.addAttribute("pelicula", new Pelicula());
         model.addAttribute("peliculas", peliculaRepository.findAll());
         return "peliculas_lista";
+    }
+
+    @RequestMapping(value = "/peliculas/editar/{peliculaId}", method = RequestMethod.GET)
+    public String editarPeliculas(ModelMap model, @PathVariable("peliculaId") int peliculaId){
+        Pelicula miPelicula = peliculaRepository.findOne((long) peliculaId);
+
+        model.addAttribute("pelicula", miPelicula);
+        return "peliculas_editar";
     }
 
     public PeliculasController() {
