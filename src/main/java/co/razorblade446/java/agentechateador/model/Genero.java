@@ -1,35 +1,71 @@
 package co.razorblade446.java.agentechateador.model;
 
-import javax.persistence.*;
 import java.io.Serializable;
+import javax.persistence.*;
+import java.util.List;
+
 
 /**
- * Modelo de Entidad "genero"
+ * Clase de Persistencia para la tabla "genero" de la Base de Datos.
+ * 
  */
-
-@Entity(name = "genero")
+@Entity
+@NamedQueries({
+		@NamedQuery(name="Genero.findAll", query="SELECT g FROM Genero g"),
+        @NamedQuery(name="Genero.findOne", query="SELECT g FROM Genero g WHERE generoId = :generoId")
+})
 public class Genero implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private short generoId;
+	@Id
+	@Column(insertable=true, updatable=true)
+	private short generoId;
 
-    @Column
-    private String nombre;
+	private String nombre;
 
-    public int getGeneroId() {
-        return generoId;
-    }
+	//bi-directional many-to-one association to Pelicula
+	@OneToMany(mappedBy="genero")
+	private List<Pelicula> peliculas;
 
-    public void setGeneroId(short generoId) {
-        this.generoId = generoId;
-    }
+	public Genero() {
+	}
 
-    public String getNombre() {
-        return nombre;
-    }
+	public short getGeneroId() {
+		return this.generoId;
+	}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+	public void setGeneroId(short generoId) {
+		this.generoId = generoId;
+	}
+
+	public String getNombre() {
+		return this.nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public List<Pelicula> getPeliculas() {
+		return this.peliculas;
+	}
+
+	public void setPeliculas(List<Pelicula> peliculas) {
+		this.peliculas = peliculas;
+	}
+
+	public Pelicula addPelicula(Pelicula pelicula) {
+		getPeliculas().add(pelicula);
+		pelicula.setGenero(this);
+
+		return pelicula;
+	}
+
+	public Pelicula removePelicula(Pelicula pelicula) {
+		getPeliculas().remove(pelicula);
+		pelicula.setGenero(null);
+
+		return pelicula;
+	}
+
 }

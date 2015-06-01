@@ -16,7 +16,6 @@
                         <th>Nombre</th>
                         <th>Fecha</th>
                         <th>Descripción</th>
-                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -26,10 +25,18 @@
                             <td>${_pelicula.nombre}</td>
                             <td class="text-nowrap">${_pelicula.fecha}</td>
                             <td>${_pelicula.trama}</td>
-                            <td class="text-nowrap">
-                                <form action="/peliculas/editar/${_pelicula.peliculaId}" method="get">
-                                    <input type="submit" class="btn btn-primary btn-mini" value="Editar"/>
-                                </form>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                <div class="container">
+                                    <div class="col-md-2"><h4>Personajes</h4></div>
+                                    <div class="col-md-8"><ul>
+                                        <c:forEach items="${_pelicula.personajes}" var="_personaje">
+                                        <li><strong>${_personaje.persona.nombre}</strong> como <strong>${_personaje.nombre}</strong></li>
+                                        </c:forEach>
+                                        </ul>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     </c:forEach>
