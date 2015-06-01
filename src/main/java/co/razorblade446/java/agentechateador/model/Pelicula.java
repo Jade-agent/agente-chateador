@@ -1,36 +1,38 @@
 package co.razorblade446.java.agentechateador.model;
 
 import javax.persistence.*;
-import static javax.persistence.GenerationType.AUTO;
+
+import java.sql.Date;
+
+/**
+ * Modelo de Entidad "pelicula"
+ */
 
 @Entity(name = "pelicula")
 public class Pelicula {
 
     @Id
-    @GeneratedValue(strategy = AUTO)
-    private long peliculaId;
+    @Column(insertable=true, updatable=true)
+    private int peliculaId;
 
     @Column(nullable = false, unique = true)
     private String nombre;
 
-    @Column(nullable = false)
-    private int generoId;
-
-    @Column(nullable = false)
-    private int anio;
+    @Column(nullable = false, columnDefinition = "DATE")
+    private Date fecha;
 
     @Column
+    private short generoId;
+
+    @Lob
+    @Column(columnDefinition = "mediumtext")
     private String trama;
-
-    public Pelicula(){
-
-    }
 
     public long getPeliculaId() {
         return peliculaId;
     }
 
-    public void setPeliculaId(long peliculaId) {
+    public void setPeliculaId(int peliculaId) {
         this.peliculaId = peliculaId;
     }
 
@@ -42,20 +44,12 @@ public class Pelicula {
         this.nombre = nombre;
     }
 
-    public int getGeneroId() {
-        return generoId;
+    public Date getFecha() {
+        return fecha;
     }
 
-    public void setGeneroId(int generoId) {
-        this.generoId = generoId;
-    }
-
-    public int getAnio() {
-        return anio;
-    }
-
-    public void setAnio(int anio) {
-        this.anio = anio;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
     public String getTrama() {
@@ -64,5 +58,13 @@ public class Pelicula {
 
     public void setTrama(String trama) {
         this.trama = trama;
+    }
+
+    public short getGeneroId() {
+        return generoId;
+    }
+
+    public void setGeneroId(short generoId) {
+        this.generoId = generoId;
     }
 }

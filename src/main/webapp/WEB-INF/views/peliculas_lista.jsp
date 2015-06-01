@@ -14,7 +14,8 @@
                     <tr>
                         <th>Id.</th>
                         <th>Nombre</th>
-                        <th>Anio</th>
+                        <th>Fecha</th>
+                        <th>Descripción</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -23,8 +24,9 @@
                         <tr>
                             <td>${_pelicula.peliculaId}</td>
                             <td>${_pelicula.nombre}</td>
-                            <td>${_pelicula.anio}</td>
-                            <td>
+                            <td class="text-nowrap">${_pelicula.fecha}</td>
+                            <td>${_pelicula.trama}</td>
+                            <td class="text-nowrap">
                                 <form action="/peliculas/editar/${_pelicula.peliculaId}" method="get">
                                     <input type="submit" class="btn btn-primary btn-mini" value="Editar"/>
                                 </form>
@@ -33,6 +35,7 @@
                     </c:forEach>
                     </tbody>
                 </table>
+                <a class="btn btn-default" href="/peliculas/importar">Importar</a>
             </div>
         </div>
     </jsp:body>

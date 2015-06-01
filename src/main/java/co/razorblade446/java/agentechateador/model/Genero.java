@@ -1,13 +1,18 @@
 package co.razorblade446.java.agentechateador.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
+
+/**
+ * Modelo de Entidad "genero"
+ */
 
 @Entity(name = "genero")
-public class Genero {
+public class Genero implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int generoId;
+    private short generoId;
 
     @Column
     private String nombre;
@@ -16,7 +21,7 @@ public class Genero {
         return generoId;
     }
 
-    public void setGeneroId(int generoId) {
+    public void setGeneroId(short generoId) {
         this.generoId = generoId;
     }
 
