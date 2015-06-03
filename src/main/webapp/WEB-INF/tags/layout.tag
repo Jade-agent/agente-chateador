@@ -17,7 +17,7 @@
     <script type="application/javascript" src="/webjars/jquery/2.1.1/jquery.min.js"></script>
     <script type="application/javascript" src="/webjars/datatables/1.10.7/js/jquery.dataTables.min.js"></script>
     <script type="application/javascript" src="/webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script type="application/javascript" src="webjars/datatables-plugins/ca6ec50/"></script>
+    <script type="application/javascript" src="/webjars/datatables-plugins/ca6ec50/pagination/scrolling.js"></script>
 </head>
 <body>
 <div class="container">

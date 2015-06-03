@@ -4,6 +4,23 @@
 <t:layout>
     <jsp:body>
 
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+                $("#enviar_mensaje").click(function(){
+                    var messageInput = $("#chat_mensaje");
+
+                    if(messageInput.val() != ""){
+                        $("#chat_log").append($("<div class='message messageUser container-fluid'>").text(messageInput.val()));
+                        messageInput.val("");
+                    }
+
+                    return true;
+                });
+
+            });
+        </script>
+
         <style>
             #chat_log {
                 min-height: 400px;
@@ -14,25 +31,34 @@
                 border: 1px solid #999999;
             }
 
-            .messageChat, messageUser{
+            .message{
                 margin-top: 5px;
             }
 
-            .messageUser {
-                alignment: right;
+            .message{
+                padding: 5px;
+                border: 1px solid #CCCCCC;
+            }
+
+            .messageUser{
+                text-align: right;
+                background-color: #FFFFFF;
+            }
+
+            .messageChat{
+                text-align: left;
+                background-color: #CCFFCC;
             }
         </style>
 
         <h2><span class="glyphicon glyphicon-comment"></span>&nbsp;Chat</h2>
 
         <div id="chat_log" class="img-rounded">
-            <div class="messageChat container">
-                <div class="col-md-8">Mensaje de Chat</div>
-                <div class="col-md-4"></div>
+            <div class="message messageChat container-fluid img-rounded">
+                Mensaje de Chat
             </div>
-            <div class="messageUser container">
-                <div class="col-md-4"></div>
-                <div class="col-md-8">Mensaje de Usuario</div>
+            <div class="message messageUser container-fluid img-rounded">
+                Mensaje de Usuario
             </div>
         </div>
         <h3>Escriba aquí</h3>
@@ -40,11 +66,11 @@
         <div class="controls">
             <form role="form" autocomplete="off">
                 <div class="input-group input-group-lg">
-                    <input type="text" class="form-control" id="chat_message"/>
+                    <input type="text" class="form-control" id="chat_mensaje"/>
                             <span class="input-group-btn">
-                                <button class="btn btn-success">
+                                <a href="#" class="btn btn-success" id="enviar_mensaje">
                                     <span class="glyphicon glyphicon-send"></span>
-                                </button>
+                                </a>
                             </span>
                 </div>
             </form>

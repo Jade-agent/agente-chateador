@@ -1,10 +1,14 @@
 package co.razorblade446.java.agentechateador.controller;
 
+import co.razorblade446.java.agentechateador.agents.FacilitadorMessage;
+import jade.domain.introspection.ACLMessage;
 import jade.wrapper.gateway.JadeGateway;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Clase principal de la aplicación, contiene métodos de controlador para mostrar información.
@@ -23,6 +27,13 @@ public class MainController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String showMessage(ModelMap modelMap){
         return "chateador";
+    }
+
+    @RequestMapping(value = "/api/facilitador", method = RequestMethod.POST)
+    @ResponseBody
+    public FacilitadorMessage apiFacilitador(@RequestParam("mensaje") String mensaje){
+        FacilitadorMessage message = new FacilitadorMessage();
+        return message;
     }
 
     /**
