@@ -9,6 +9,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
     <title>Agente Chateador - Peliculas</title>
     <link rel="stylesheet" href="/webjars/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="/webjars/bootstrap/3.2.0/css/bootstrap-theme.min.css">
@@ -20,9 +21,8 @@
     <script type="application/javascript" src="/webjars/datatables-plugins/ca6ec50/pagination/scrolling.js"></script>
 </head>
 <body>
-<div class="container">
     <nav class="nav navbar-inverse">
-        <div class="container">
+        <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="/">Agente Chateador</a>
             </div>
@@ -33,7 +33,6 @@
             </div>
         </div>
     </nav>
-</div>
 
 <div class="container">
     <div class="row">

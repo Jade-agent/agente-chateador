@@ -178,6 +178,18 @@
             <version>4.3.3</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.tilab.jade</groupId>
+            <artifactId>jade-misc</artifactId>
+            <version>2.6.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.tilab.jade</groupId>
+            <artifactId>jade-wsdc</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+
     </dependencies>
     <build>
         <finalName>agente-chateador</finalName>
@@ -206,4 +218,13 @@
             </plugin>
         </plugins>
     </build>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.3</version>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>

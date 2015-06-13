@@ -37,8 +37,8 @@ public class PeliculasController {
 
     /**
      * Método de Controlador que lista las películas registradas.
-     * @param model
-     * @return
+     * @param model ModelMap que permite enviar parametros a la UI
+     * @return String
      */
     @RequestMapping(value = "/peliculas", method = RequestMethod.GET)
     public String getListaPeliculas(ModelMap model){
@@ -47,7 +47,7 @@ public class PeliculasController {
         Query queryPeliculas = entityManager.createNamedQuery("Pelicula.findAllWithCast");
         queryPeliculas.setMaxResults(200);
 
-        List<Pelicula> pelis = queryPeliculas.getResultList();
+        List pelis = queryPeliculas.getResultList();
 
         model.addAttribute("peliculas", pelis);
         return "peliculas_lista";
@@ -55,9 +55,9 @@ public class PeliculasController {
 
     /**
      * Método de Controlador que habilita la edición de las peliculas
-     * @param model
-     * @param peliculaId
-     * @return MapModel
+     * @param model ModelMap que permite enviar parametros a la UI
+     * @param peliculaId ID de la película
+     * @return String
      */
     @RequestMapping(value = "/peliculas/editar/{peliculaId}", method = RequestMethod.GET)
     public String editarPeliculas(ModelMap model, @PathVariable("peliculaId") int peliculaId){
@@ -69,11 +69,10 @@ public class PeliculasController {
 
     /**
      * Método de Controlador que realiza la importación de las películas desde TMDB.org
-     * @param model
-     * @return MapModel
+     * @return String
      */
     @RequestMapping(value = "/peliculas/importar", method = RequestMethod.GET)
-    public String importarPeliculas(ModelMap model){
+    public String importarPeliculas(){
         return "peliculas_importar";
     }
 
@@ -81,10 +80,9 @@ public class PeliculasController {
      * Método de Controlador que realiza la importación de las películas desde TMDB.org
      * @return Json
      */
-    //@Transactional
     @RequestMapping(value = "/peliculas/importar", method = RequestMethod.POST)
     @ResponseBody
-    public PeliculaImportarMessage importarPeliculas(){
+    public PeliculaImportarMessage importarPeliculasProceso(){
         initializeEntityManager();
         PeliculaImportarMessage response = new PeliculaImportarMessage();
         response.setCantidad(0);
@@ -222,6 +220,9 @@ public class PeliculasController {
         return response;
     }
 
+    /**
+     * Inicialización del EntityManager (Persistencia)
+     */
     protected void initializeEntityManager(){
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("defaultPersistenceUnit");
 

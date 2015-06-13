@@ -9,10 +9,24 @@
 
                 $("#enviar_mensaje").click(function(){
                     var messageInput = $("#chat_mensaje");
+                    var chatId = $("#chat_id");
 
                     if(messageInput.val() != ""){
-                        $("#chat_log").append($("<div class='message messageUser container-fluid'>").text(messageInput.val()));
+
+                        var mensaje = messageInput.val();
+
+                        $("#chat_log").append($("<div class='message messageUser container-fluid img-rounded'>").text(mensaje));
+
                         messageInput.val("");
+
+                        $.post('/api',{mensaje: mensaje, id: chatId.val()},function(data){
+                            $("#chat_log").append($("<div class='message messageChat container-fluid img-rounded'>").text(data.mensaje));
+
+                            if(chatId.val() == "")
+                                chatId.val(data.chatId);
+
+                        }, "json");
+
                     }
 
                     return true;
@@ -25,10 +39,11 @@
             #chat_log {
                 min-height: 400px;
                 max-height: 400px;
-                min-width: 400px;
                 width: 100%;
                 background-color: #DDDDDD;
                 border: 1px solid #999999;
+                overflow-y: scroll;
+                overflow-x: hidden;
             }
 
             .message{
@@ -65,6 +80,7 @@
 
         <div class="controls">
             <form role="form" autocomplete="off">
+                <input type="hidden" id="chat_id">
                 <div class="input-group input-group-lg">
                     <input type="text" class="form-control" id="chat_mensaje"/>
                             <span class="input-group-btn">

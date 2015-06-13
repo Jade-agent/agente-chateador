@@ -42,6 +42,6 @@ http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
 
-
+    <bean id="jadeBoot" class="co.razorblade446.java.agentechateador.listener.JadeLoaderEventListener" />
 
 </beans>
